@@ -3,17 +3,31 @@ code draft is as following
 leve l : promting the user ( worker ) about personal information 
 information includes name age family workproffesion etc( if you want to include what thing we should ask him do edit  ) 
 after clearifing  work proffesion of the person  we will narrow down  our approch to specific question
-two question array are composed  each of data type string   1 negivequestion array and  2 positive quesion array both will have anohter array incorealtion with them negative one will have array of negative int and positive one array of positive int
-questions will be modeled from a prerecorded array in specific sequece 
-string arrays will move inrespect to there int array in sequntial order
 
-user only has to validaty in yes or no to the question proposed as true or false 
+ -------------how we are going to proceed --------------------------------------
+two string data type question array will be composed    1 negivequestion array and  2nd positive quesion array both will have anohter array incorealtion with them negative one will have array of negative int and positive one array of positive int
+questions will be modeled from string arrays  in sequential manner  
+string arrays will move inrespect to there int array in sequntial order int arrays
+
+user only has to validaty in yes or no to the question proposed
 to each question he chooses true its respected array (positive / negative) int array ,value at that point will be if true remain same if fasle become zero
 
 pogram records user data by storing them in arrays under the tag of his name and a specific number sequece  
+--------------------------------------------------------------------------------------------------
 
 
-after the final question through a generic formulae we will traslate the net effect of the (positive and the negative)arrays  value inrespect to the other  and then conclude ..........
+level 2 :
+after the final question through a generic formulae we will traslate the relative net effect of the job conditions on the person  then conclude about his postion inresposite to the job 
+------------------------------formulae composition ------------------------------------------
 
-==
+stadered deviation  of all the negative int array elemnts individually stored in varable N
+standered deviation of all the positive int array elements individually stored in varable P 
+ if the ratio of the deviation of pos / neg  is in range of of 4 the system iis balanced otherwise parameters in both the int positive array and int neg array have to be readressed or external benfits of other mean must be provided
+ and for the next 3 elements multiply by 2.5 and 
+
+extra benefits positive stance will be added to the the int positive array and the system reevaluates the formula
+
+
+
+
 
