@@ -1,60 +1,66 @@
 # 📊 WELBREXA
 
-A console-based C++ application designed to help users reflect on their emotional and job-related well-being through daily tracking, scoring, and personalized recommendations.
+WELBREXA is an application designed to help users and organizations understand how daily job-related experiences, personal needs, and challenges balance against the benefits and positive aspects of work. Its purpose is to support healthier well-being and improve employee productivity by identifying whether job value sufficiently compensates for daily difficulties.
 
 ---
 
 ## 📘 Problem Statement
 
-In modern work environments, employees often struggle to balance professional demands with personal well-being. Stress, emotional fatigue, and diminishing motivation can harm both productivity and life satisfaction.
+In modern workplaces, employees experience a combination of stress, workload imbalance, and fluctuating motivation. These challenges affect not only personal well-being but also overall productivity.
 
-This project provides a simple interactive system that evaluates daily emotional and job-related factors—both positive and negative—and generates personalized recommendations to help users restore balance and improve overall well-being.
+**WELBREXA focuses on more than emotions—it relates an employee’s needs and challenges to the benefits they receive from their job.**  
+The system helps determine whether the positive value provided by the job balances out daily troubles. This insight is valuable for both individuals and organizations, enabling better support and improved work-life quality.
 
 ---
 
 ## 🎯 Purpose, Goals & Expected Outcomes
 
 ### **Purpose**
-To help users become more aware of how their daily emotional and job-related experiences influence their overall well-being, while providing tailored suggestions to support a healthier work-life balance.
+To provide clarity on how job-related experiences—both positive and negative—impact overall well-being and productivity. WELBREXA helps determine whether job benefits, support, and rewards compensate for work-related challenges.
 
 ### **Goals**
-1. Track and score daily positive and negative experiences.
-2. Evaluate well-being trends across multiple days.
-3. Generate personalized feedback and improvement suggestions.
-4. Allow users to provide feedback on the system's accuracy.
+1. Track and score daily positive and negative job-related experiences.
+2. Analyze whether the value of the job outweighs or balances daily challenges.
+3. Identify employee needs that require more attention from organizations.
+4. Provide personalized recommendations to support well-being.
+5. Allow users to give feedback on the system’s accuracy.
 
 ### **Expected Outcomes**
-- A functional C++ application for daily emotional/job-related analysis.
-- A scoring-based evaluation model reflecting real-time well-being.
-- Insightful recommendations that encourage work-life balance and personal development.
+- A functional application for analyzing job-centered well-being.
+- A clear scoring model that evaluates whether job benefits equalize work stressors.
+- Insights useful for both employees and employers.
+- Personalized suggestions that encourage growth, balance, and productivity.
 
 ---
 
 ## 📝 Requirement Analysis
 
 ### **Inputs**
-- Daily positive and negative factors selected or scored by the user.
-- Numerical score for each factor (0–50).
-- Optional self-feedback on evaluation accuracy.
+- User-selected daily positive and negative factors.
+- Numerical scores (0–50) assigned to each factor.
+- Optional user feedback on the system's assessment.
 
 ### **Processes**
-- Aggregation of daily emotional and job-related scores.
-- Determination of daily emotional balance.
-- Weekly trend analysis and pattern detection.
-- Recommendation generation (e.g., rest, exercise, help others).
-- Feedback loop to refine suggestions.
+- Aggregating daily job-related scores.
+- Comparing positive job value vs. negative impact.
+- Determining balanced vs. imbalanced states.
+- Analyzing trends across multiple days.
+- Generating tailored recommendations.
+- Refining suggestions based on feedback.
 
 ### **Outputs**
-- Daily summary and emotional balance status.
-- Balanced vs. imbalanced state indication.
-- Weekly trend insights.
-- Personalized task recommendations for improvement.
+- Daily well-being summaries.
+- Balance/imbalance assessments.
+- Weekly insights and trends.
+- Personalized recommendations for improvement.
 
 ---
 
 ## 🔒 Constraints & Data Validation
 
-- Scores must be within **0–50** per factor.
-- Minimum of **3 days** of input required for meaningful pattern analysis.
+- Factor scores must be within **0–50**.
+- Minimum of **3 days** of records required for trend analysis.
 - Duplicate factors cannot be selected on the same day.
+- Feedback must be provided in valid numerical or textual format.
 
+---
