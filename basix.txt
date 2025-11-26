@@ -1,5 +1,18 @@
 code draft is as following 
-
+sdsd
+dasd
+asd
+asd
+as
+das
+d
+asd
+asd
+as
+das
+das
+das
+d
 leve l : promting the user ( worker ) about personal information 
 information includes name age family workproffesion etc( if you want to include what thing we should ask him do edit  ) 
 after clearifing  work proffesion of the person  we will narrow down  our approch to specific question
