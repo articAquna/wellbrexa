@@ -2,6 +2,9 @@
 #include<string>
 #include<iomanip>
 #include<fstream>
+#include<chrono>
+#include<thread>
+#include<filesystem>
 using namespace std;
 
 
@@ -28,6 +31,16 @@ struct worker{
 
 
 };
+
+bool read(){
+    ifstream fin("markdown.txt");
+    string characters;
+    fin >> characters;
+    fin.close();
+
+    return(characters=="yes");
+
+}
 
 void screen(const worker &dummy){
     ofstream fout("workerdata.txt");
@@ -74,7 +87,7 @@ bool display(const worker &dummy){
 
 }
 
-worker tag(worker *W ){
+void tag(worker *W ){
 
     cout << "dear worker you will be provided with question";
     cout << "infer and remeber without varification youu dead ";
@@ -123,10 +136,21 @@ worker tag(worker *W ){
     }while(!display(dummy));
 
     screen(dummy);
-
-
-
+    while(!filesystem :: exists("markdown.txt")){
+        this_thread::sleep_for(chrono::seconds(1));
     }
+
+    if(read){
+
+        *W = dummy;
+
+    }else{
+        cout << "your data is terminated";
+    }
+
+
+
+}
 
 
 
