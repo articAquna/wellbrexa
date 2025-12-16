@@ -8,7 +8,7 @@
 namespace fs = std::filesystem;
 using namespace std;
 
-
+int z = 0;
 struct age{
     int day , month , year;
 }
@@ -150,6 +150,7 @@ void tag(worker *W ){
     if(read()){
 
         *W = dummy;
+        z++;
 
     }else{
         cout << "your data is terminated";
@@ -160,25 +161,35 @@ void tag(worker *W ){
 
 
 }
+int display(){
+        int a;
+        cout << setw(20) << "table of contetn\n";
+            cout << " 1 register worker data menu \n";
 
-void DisPlay(worker W){
+        cin>>a;
+        return a;
+        
+
+}
+void selection(int a , worker W[] ){
 
 
+    switch (a){
+        case 1:  tag(&W[z]);
+    }
 
 }
 
 
-
-
-
-
-
-
 int main(){
-   
-    const int total = 5;
-    worker  W[total];
-      
-    tag(W);
+  const int total = 5;
+  worker  W[total]; 
+
+  
+      selection(display() , W );
+
+    
+
+
 
 }
