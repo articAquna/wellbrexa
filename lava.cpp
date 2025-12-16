@@ -4,7 +4,8 @@
 #include<fstream>
 #include<chrono>
 #include<thread>
-#include<filesystem>
+#include <filesystem>
+namespace fs = std::filesystem;
 using namespace std;
 
 
@@ -136,11 +137,11 @@ void tag(worker *W ){
     }while(!display(dummy));
 
     screen(dummy);
-    while(!filesystem :: exists("markdown.txt")){
+    while(!fs:: exists("markdown.txt")){
         this_thread::sleep_for(chrono::seconds(1));
     }
 
-    if(read){
+    if(read()){
 
         *W = dummy;
 
@@ -162,9 +163,10 @@ void tag(worker *W ){
 
 
 int main(){
+   
     const int total = 5;
     worker  W[total];
-     
-    
+      
+    tag(W);
 
 }
