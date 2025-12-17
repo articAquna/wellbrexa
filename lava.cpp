@@ -73,7 +73,7 @@ void screen(const worker &dummy){
 
 bool display(const worker &dummy){
      system("cls");
-
+//  table 
     cout <<setw(30)<<"name"<<setw(10)<<dummy.NAME<<endl<<endl;
     cout <<setw(5)<<"date"<<endl<<dummy.AGE.day<<setw(5)<<dummy.AGE.month<<setw(5)<< dummy.AGE.year <<endl;
     cout <<setw(5)<<"address"<<endl<<"permanet adress :"<<dummy.ADDRESS.padr <<endl<<"temporary adress :"<< dummy.ADDRESS.radr<<endl;
