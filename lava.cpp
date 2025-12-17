@@ -73,20 +73,16 @@ void screen(const worker &dummy){
 
 bool display(const worker &dummy){
      system("cls");
-    cout <<setw(10)<<"name"<<setw(10)<<dummy.NAME<<endl;
-    cout <<setw(10)<<"date"<<setw(5)<<dummy.AGE.day<<setw(5)<<dummy.AGE.month<<setw(5)<< dummy.AGE.year <<endl;
-    cout <<setw(10)<<"address"<<setw(10)<<dummy.ADDRESS.padr <<setw(2)<< dummy.ADDRESS.radr<<endl;
-    cout <<setw(10)<<"JOBSTAUTS"<<setw(10)<<dummy.JOB_status <<setw(2)<< dummy.ADDRESS.radr<<endl;
-    cout <<setw(10)<<"phoneNO\n";
-    for(int i = 0 ; i<2 ; i++){
-    cout <<setw(2)<< dummy.REFRENCES.phone1[i]<<endl;
-    }
-    cout <<setw(10)<<"EMAIL\n";
-    for(int i = 0 ; i<2 ; i++){
-    cout <<setw(2)<< dummy.REFRENCES.email[i]<<endl;
-    }
-    cout <<setw(10)<<"job pay"<<setw(10)<<dummy.pay<<endl;
 
+    cout <<setw(30)<<"name"<<setw(10)<<dummy.NAME<<endl<<endl;
+    cout <<setw(5)<<"date"<<endl<<dummy.AGE.day<<setw(5)<<dummy.AGE.month<<setw(5)<< dummy.AGE.year <<endl;
+    cout <<setw(5)<<"address"<<endl<<"permanet adress :"<<dummy.ADDRESS.padr <<endl<<"temporary adress :"<< dummy.ADDRESS.radr<<endl;
+    cout <<setw(5)<<"JOBSTAUTS"<<endl<<dummy.JOB_status <<"\r  "<<endl;
+    cout <<setw(5)<<"phoneNO\n";
+        for(int i = 0 ; i<2 ; i++)cout <<dummy.REFRENCES.phone1[i]<<endl;
+    cout <<setw(10)<<"EMAIL\n";
+        for(int i = 0 ; i<2 ; i++)cout << dummy.REFRENCES.email[i]<<endl;
+    cout <<setw(10)<<"job pay"<<setw(10)<<dummy.pay<<endl;
     cout <<endl<<endl<<endl;
     cout << "if this si your data input 1";
     int v;
@@ -102,6 +98,7 @@ void tag(worker *W ){
     worker dummy = *W;
  do{
         cout << "enter your name ";
+
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin , dummy.NAME);
 
@@ -116,6 +113,7 @@ void tag(worker *W ){
             cin >> dummy.AGE.year;
         
         cout <<"now for you adresses\n";
+
             cout << "prove your permaanet address\n";
             cin >> dummy.ADDRESS.padr;
             cout << " peovide temporary adress \n";
@@ -141,15 +139,15 @@ void tag(worker *W ){
             "4=IT Support",
             "5=Customer Service Representative"
                                                  };
-        cout << "choose you proffection"<<endl; 
+            cout << "choose you proffection"<<endl; 
              for (int k = 0 ; k < 5 ; k++){
              cout << setw(10) << commonJobs[k] << endl; 
-           }
+             }
              int v;
              cin >> v;
              dummy.JOB_status = commonJobs[v-1];
 
-         cout << "you pay ";
+        cout << "you pay ";
              cin >> dummy.pay;
 
 
@@ -162,7 +160,7 @@ void tag(worker *W ){
     }
 
     if(read()){
-        cout << "your form is validated you may procddeed";
+        cout << "your form is validated you may procddeed\n";
         *W = dummy;
         calculation(W[z]);
 
@@ -181,19 +179,17 @@ void tag(worker *W ){
 void display(const worker dummy[]  ){
 
 for(int g = 0 ; g < z ; g++ ){
-    cout <<setw(10)<<"name"<<setw(10)<<dummy[g].NAME<<endl;
-    cout <<setw(10)<<"date"<<setw(5)<<dummy[g].AGE.day<<setw(5)<<dummy[g].AGE.month<<setw(5)<< dummy[g].AGE.year <<endl;
-    cout <<setw(10)<<"address"<<setw(10)<<dummy[g].ADDRESS.padr <<setw(2)<< dummy[g].ADDRESS.radr<<endl;
-    cout <<setw(10)<<"JOBSTAUTS"<<setw(10)<<dummy[g].JOB_status <<endl;
-    cout <<setw(10)<<"phoneNO\n";
-    for(int i = 0 ; i<2 ; i++){
-    cout <<setw(2)<< dummy[g].REFRENCES.phone1[i]<<endl;
-    }
+    cout <<setw(30)<<"name : "<<setw(10)<<dummy[g].NAME<<endl ;
+    cout <<setw(5)<<"date"<<endl<<dummy[g].AGE.day<<setw(5)<<dummy[g].AGE.month<<setw(5)<< dummy[g].AGE.year <<endl<<endl;
+    cout <<setw(5)<<"address"<<endl<<dummy[g].ADDRESS.padr <<endl<< dummy[g].ADDRESS.radr<<endl<<endl;
+    cout <<setw(5)<<"JOBSTAUTS"<<endl<<dummy[g].JOB_status <<endl<<endl;
+    cout <<setw(5)<<"phoneNO\n";
+     for(int i = 0 ; i<2 ; i++)cout <<setw(2)<< dummy[g].REFRENCES.phone1[i]<<endl;
+     cout <<endl; 
     cout <<setw(10)<<"EMAIL\n";
-    for(int i = 0 ; i<2 ; i++){
-    cout <<setw(2)<< dummy[g].REFRENCES.email[i]<<endl;
-    }
-      cout <<setw(10)<<"pay"<<setw(10)<<dummy[g].pay<<endl;    
+     for(int i = 0 ; i<2 ; i++)cout <<setw(2)<< dummy[g].REFRENCES.email[i]<<endl;
+     cout<<endl;
+    cout <<setw(5)<<"pay"<<setw(5)<<dummy[g].pay<<endl<<endl;    
      cout <<setw(10)<<"benifitlevel"<<setw(10)<<dummy[g].increase<<endl;
    
 
@@ -215,7 +211,7 @@ void cumputation(worker *W, int i){
 }
 
 void calculation(worker &w){
-    cout << "you will be posed with 5 question in afferamation to hte statmetn press 1 else any key ";
+    cout << "you will be posed with 5 question in afferamation to hte statmetn press 0 else any key ";
 
     // all 3 condition in same row must be true if not only till 
 
@@ -236,14 +232,14 @@ void calculation(worker &w){
                     "Financial burden exceeds 10,000 due to load or obligations"
                 }
             };
-        bool check = true;
+        bool  check ;
         for(int i = 0; i< 3 ; i++){
             bool flag =true;
             for(int j = 0 ; j<3 ; j++){
 
               cout <<   conditions[i][j] << endl;
               cin >>  check;
-            if(check!=1)flag=false;
+              if(!check)flag=false;
             
 
             }
@@ -261,7 +257,7 @@ int display(){
         cout << setw(20) << "table of contetn\n";
             cout << " 1 register worker data menu \n";
             cout << " 2 display all workers data as of now\n ";
-            cout << " 3 to proccess user data\n ";
+          
         cin>>a;
         return a;
         
@@ -275,7 +271,7 @@ void selection(int a , worker W[]  ){
         break;
         case 2:  display(W);
         break;
-        case 3:  calculation(W[z-1]);
+   
     }
 
 
