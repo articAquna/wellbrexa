@@ -9,6 +9,7 @@ namespace fs = std::filesystem;
 using namespace std;
 
 int z = 0;
+string Y = "abc";
 struct age{
     int day , month , year;
 }
@@ -176,28 +177,63 @@ void tag(worker *W ){
 
 }
 
-void display(const worker dummy[]  ){
-
-for(int g = 0 ; g < z ; g++ ){
-    cout <<setw(30)<<"name : "<<setw(10)<<dummy[g].NAME<<endl ;
-    cout <<setw(5)<<"date"<<endl<<dummy[g].AGE.day<<setw(5)<<dummy[g].AGE.month<<setw(5)<< dummy[g].AGE.year <<endl<<endl;
-    cout <<setw(5)<<"address"<<endl<<dummy[g].ADDRESS.padr <<endl<< dummy[g].ADDRESS.radr<<endl<<endl;
-    cout <<setw(5)<<"JOBSTAUTS"<<endl<<dummy[g].JOB_status <<endl<<endl;
-    cout <<setw(5)<<"phoneNO\n";
-     for(int i = 0 ; i<2 ; i++)cout <<setw(2)<< dummy[g].REFRENCES.phone1[i]<<endl;
-     cout <<endl; 
-    cout <<setw(10)<<"EMAIL\n";
-     for(int i = 0 ; i<2 ; i++)cout <<setw(2)<< dummy[g].REFRENCES.email[i]<<endl;
-     cout<<endl;
-    cout <<setw(5)<<"pay"<<setw(5)<<dummy[g].pay<<endl<<endl;    
-     cout <<setw(10)<<"benifitlevel"<<setw(10)<<dummy[g].increase<<endl;
-   
-
-     cout <<endl<<endl<<endl;
-} 
-
+void transfer(const string &a , string *Y ){
+    *Y = a;
+    cout << "password updated success fully\n";
+}
+bool password(const string &a , const string &Y){
+    return (a == Y);
+}
+void newpassword(){
+    string p;
+    cout<<"input original password to proceed\n";
+    cin >> p;
+ if(password(p , Y)){
+    cout << "enter new password\n";
+    string a;
+    cin >> a;
+    transfer(a,&Y);
+    
+ }else{
+    cout << "invallid password ascess denied";
+ }
+ 
+ std::this_thread::sleep_for(std::chrono :: seconds(5));
+ system("cls");
+  
 }
 
+ 
+
+
+void display(const worker dummy[]  ){
+    cout << "input  PASSWORD TO PROCEED\n";
+    string a;
+    cin >> a;
+   if (password(a,Y)){
+
+            for(int g = 0 ; g < z ; g++ ){
+                cout <<setw(30)<<"name : "<<setw(10)<<dummy[g].NAME<<endl ;
+                cout <<setw(5)<<"date"<<endl<<dummy[g].AGE.day<<setw(5)<<dummy[g].AGE.month<<setw(5)<< dummy[g].AGE.year <<endl<<endl;
+                cout <<setw(5)<<"address"<<endl<<dummy[g].ADDRESS.padr <<endl<< dummy[g].ADDRESS.radr<<endl<<endl;
+                cout <<setw(5)<<"JOBSTAUTS"<<endl<<dummy[g].JOB_status <<endl<<endl;
+                cout <<setw(5)<<"phoneNO\n";
+                for(int i = 0 ; i<2 ; i++)cout <<setw(2)<< dummy[g].REFRENCES.phone1[i]<<endl;
+                cout <<endl; 
+                cout <<setw(10)<<"EMAIL\n";
+                for(int i = 0 ; i<2 ; i++)cout <<setw(2)<< dummy[g].REFRENCES.email[i]<<endl;
+                cout<<endl;
+                cout <<setw(5)<<"pay"<<setw(5)<<dummy[g].pay<<endl<<endl;    
+                cout <<setw(10)<<"benifitlevel"<<setw(10)<<dummy[g].increase<<endl;
+            
+
+                cout <<endl<<endl<<endl;
+            } 
+
+        }else {
+            cout << "invalid password\n";
+        }
+}
 void cumputation(worker *W, int i){
 
     switch (i){
@@ -239,7 +275,7 @@ void calculation(worker &w){
 
               cout <<   conditions[i][j] << endl;
               cin >>  check;
-              if(!check)flag=false;
+              if(check)flag=false;
             
 
             }
@@ -257,6 +293,7 @@ int display(){
         cout << setw(20) << "table of contetn\n";
             cout << " 1 register worker data menu \n";
             cout << " 2 display all workers data as of now\n ";
+            cout << " 3 to change system pasword\n";
           
         cin>>a;
         return a;
@@ -271,6 +308,7 @@ void selection(int a , worker W[]  ){
         break;
         case 2:  display(W);
         break;
+        case 3: newpassword();
    
     }
 
@@ -281,6 +319,7 @@ void selection(int a , worker W[]  ){
 
 
 int main(){
+
   const int total = 5;
   worker  W[total];
   
