@@ -285,12 +285,55 @@ int display(){
             cout << "1. Register worker data menu" << endl;
             cout << "2. Display all workers' data as of now" << endl;
             cout << "3. Change system password" << endl;
-          
+            cout << "4. to view your personal data\n ";
+
         cin>>a;
         return a;
         
 
 }
+
+void Personal_log(const worker dummy[]){
+    string a;
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    getline(cin , a);
+    bool flag(true);
+    for(int g = 0; g < z; g++){
+        
+        if(a == dummy[g].NAME ){
+                cout << setw(20) << "Name: " << setw(20) << dummy[g].NAME << endl;
+                cout << setw(20) << "Date of Birth: " << setw(5) << dummy[g].AGE.day << "/" << setw(2) << dummy[g].AGE.month << "/" << setw(4) << dummy[g].AGE.year << endl << endl;
+                cout << setw(20) << "Address: " << endl << "Permanent: " << dummy[g].ADDRESS.padr << endl << "Temporary: " << dummy[g].ADDRESS.radr << endl << endl;
+                cout << setw(20) << "Job Status: " << dummy[g].JOB_status << endl << endl;
+                cout << setw(20) << "Phone Numbers: " << endl;
+                for(int i = 0; i < 2; i++) cout << dummy[g].REFRENCES.phone1[i] << endl;
+                cout << endl; 
+                cout << setw(20) << "Emails: " << endl;
+                for(int i = 0; i < 2; i++) cout << dummy[g].REFRENCES.email[i] << endl;
+                cout << endl;
+                cout << setw(20) << "Pay: " << setw(10) << dummy[g].pay << endl << endl;    
+                cout << setw(20) << "Benefit Level: " << setw(10) << dummy[g].increase << endl;
+
+                cout << endl << endl << endl;
+                flag = false;
+                cout << "to continue press 1";
+                int p;
+                cin >> p;
+              
+            } 
+        }
+
+       if(flag){
+        cout << "no worker of that  name exists  "; 
+
+       }
+       std::this_thread::sleep_for(std :: chrono :: seconds(3));
+
+       system("cls");
+
+
+}
+
 void selection(int a, worker W[]){
     system("cls");
 
@@ -300,6 +343,10 @@ void selection(int a, worker W[]){
         case 2: display(W);
         break;
         case 3: newpassword();
+        break;
+        case 4: Personal_log(W);
+        break;
+        
     }
 }
 
