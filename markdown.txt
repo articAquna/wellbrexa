@@ -1,1 +1,57 @@
 yes
+
+    std::vector<std::string> positiveWords = {
+        "good", "happy", "love", "excellent", "great", "wonderful", "amazing", "like",
+        "joy", "joyful", "delight", "delighted", "cheerful", "optimistic", "positive",
+        "fantastic", "brilliant", "outstanding", "superb", "incredible", "fabulous",
+        "awesome", "marvelous", "splendid", "terrific", "glorious", "successful",
+        "accomplished", "peaceful", "calm", "friendly", "kind", "generous", "helpful",
+        "supportive", "beautiful", "handsome", "charming", "graceful", "bright",
+        "creative", "innovative", "smart", "intelligent", "wise", "strong", "powerful",
+        "confident", "motivated", "inspired", "hopeful", "encouraging", "enthusiastic",
+        "energetic", "fun", "funny", "playful", "adventurous", "curious", "lovely",
+        "sweet", "caring", "compassionate", "affectionate", "romantic", "loyal",
+        "trustworthy", "honest", "reliable", "resilient", "determined", "brave",
+        "courageous", "fearless", "healthy", "fit", "strong-willed", "hardworking",
+        "dedicated", "passionate", "talented", "skilled", "capable", "resourceful",
+        "successful", "victorious", "winner", "thriving", "prosperous", "wealthy",
+        "fortunate", "blessed", "grateful", "thankful", "appreciative", "positive-minded",
+        "uplifting", "radiant", "vibrant", "glowing", "smiling", "laughing", "joyous"
+    };
+    std::vector<std::string> negativeWords = {
+        "bad", "sad", "hate", "terrible", "awful", "horrible", "poor", "don't like",
+        "frustrating", "boring", "angry", "upset", "annoyed", "disappointed", "miserable",
+        "depressed", "lonely", "unhappy", "unpleasant", "painful", "hurt", "sick", "ill",
+        "weak", "failure", "loser", "worthless", "useless", "hopeless", "pathetic",
+        "disgusting", "gross", "nasty", "dirty", "messy", "chaotic", "confusing",
+        "difficult", "hard", "problem", "issue", "error", "wrong", "fake", "liar",
+        "selfish", "greedy", "jealous", "envy", "angst", "fear", "scared", "afraid",
+        "anxious", "nervous", "stress", "stressed", "tired", "exhausted", "lazy",
+        "ignorant", "stupid", "dumb", "foolish", "arrogant", "rude", "mean", "cruel",
+        "violent", "abusive", "toxic", "negative", "unfair", "unjust", "corrupt",
+        "evil", "sinful", "shameful", "guilty", "regret", "resentful", "bitter",
+        "broken", "damaged", "lost", "confused", "trapped", "stuck", "weakness",
+        "unreliable", "fake", "annoying", "disrespectful", "untrustworthy", "manipulative",
+        "controlling", "oppressive", "harsh", "cold", "distant", "unfriendly"
+    };
+
+    std::string input;
+    std::cout << "Enter your text: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    std::getline(std::cin, input);
+
+    input = toLower(input);
+
+
+    for (const auto& pos : positiveWords) {
+        if (input.find(pos) != std::string::npos) {
+            positiveCount++;
+        }
+    }
+    for (const auto& neg : negativeWords) {
+        if (input.find(neg) != std::string::npos) {
+            negativeCount++;
+        }
+    }
+
+}

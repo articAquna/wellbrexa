@@ -4,7 +4,9 @@
 #include<fstream>
 #include<chrono>
 #include<thread>
+#include<algorithm>
 #include <filesystem>
+#include <vector>
 namespace fs = std::filesystem;
 using namespace std;
 
@@ -24,6 +26,11 @@ struct cont{
     string phone1[2], email[2];
 }
 ;
+struct net{
+int positive;
+int negative;
+}
+;
 struct worker{
     string NAME ;
     age AGE;
@@ -34,11 +41,17 @@ struct worker{
     float bonus;
     int signature[5];
     float increase = 0;
+    net data;
+    
 
 
 };
 
 void calculation(worker &w);
+void slow(int s){
+    cout << "system is proceesing the data\n";
+    this_thread::sleep_for(chrono :: seconds(s));
+}
 bool read(){
     ifstream fin("markdown.txt");
     string characters;
@@ -285,13 +298,85 @@ int display(){
             cout << "1. Register worker data menu" << endl;
             cout << "2. Display all workers' data as of now" << endl;
             cout << "3. Change system password" << endl;
-            cout << "4. to view your personal data\n ";
+            cout << "4. to view your personal data\n";
+            cout << "5. enter commit about the system\n";
+            cout << "6. view the status of teh system\n";
+            
 
         cin>>a;
         return a;
         
 
 }
+std::string toLower(const std::string& str) {
+    std::string result = str;
+    std::transform(result.begin(), result.end(), result.begin(), ::tolower);
+    return result;
+}
+   
+
+
+void commit(worker W[]) {
+
+    std::vector<std::string> positiveWords = {
+        "good", "happy", "love", "excellent", "great", "wonderful", "amazing", "like",
+        "joy", "joyful", "delight", "delighted", "cheerful", "optimistic", "positive",
+        "fantastic", "brilliant", "outstanding", "superb", "incredible", "fabulous",
+        "awesome", "marvelous", "splendid", "terrific", "glorious", "successful",
+        "accomplished", "peaceful", "calm", "friendly", "kind", "generous", "helpful",
+        "supportive", "beautiful", "handsome", "charming", "graceful", "bright",
+        "creative", "innovative", "smart", "intelligent", "wise", "strong", "powerful",
+        "confident", "motivated", "inspired", "hopeful", "encouraging", "enthusiastic",
+        "energetic", "fun", "funny", "playful", "adventurous", "curious", "lovely",
+        "sweet", "caring", "compassionate", "affectionate", "romantic", "loyal",
+        "trustworthy", "honest", "reliable", "resilient", "determined", "brave",
+        "courageous", "fearless", "healthy", "fit", "strong-willed", "hardworking",
+        "dedicated", "passionate", "talented", "skilled", "capable", "resourceful",
+        "successful", "victorious", "winner", "thriving", "prosperous", "wealthy",
+        "fortunate", "blessed", "grateful", "thankful", "appreciative", "positive-minded",
+        "uplifting", "radiant", "vibrant", "glowing", "smiling", "laughing", "joyous"
+    };
+    std::vector<std::string> negativeWords = {
+        "bad", "sad", "hate", "terrible", "awful", "horrible", "poor", "don't like",
+        "frustrating", "boring", "angry", "upset", "annoyed", "disappointed", "miserable",
+        "depressed", "lonely", "unhappy", "unpleasant", "painful", "hurt", "sick", "ill",
+        "weak", "failure", "loser", "worthless", "useless", "hopeless", "pathetic",
+        "disgusting", "gross", "nasty", "dirty", "messy", "chaotic", "confusing",
+        "difficult", "hard", "problem", "issue", "error", "wrong", "fake", "liar",
+        "selfish", "greedy", "jealous", "envy", "angst", "fear", "scared", "afraid",
+        "anxious", "nervous", "stress", "stressed", "tired", "exhausted", "lazy",
+        "ignorant", "stupid", "dumb", "foolish", "arrogant", "rude", "mean", "cruel",
+        "violent", "abusive", "toxic", "negative", "unfair", "unjust", "corrupt",
+        "evil", "sinful", "shameful", "guilty", "regret", "resentful", "bitter",
+        "broken", "damaged", "lost", "confused", "trapped", "stuck", "weakness",
+        "unreliable", "fake", "annoying", "disrespectful", "untrustworthy", "manipulative",
+        "controlling", "oppressive", "harsh", "cold", "distant", "unfriendly"
+    };
+
+    std::string input;
+    std::cout << "Enter your text: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    std::getline(std::cin, input);
+
+    input = toLower(input);
+
+
+    for (const auto& pos : positiveWords) {
+        if (input.find(pos) != std::string::npos) {
+            W[z].data.positive += 1;
+        }
+    }
+    for (const auto& neg : negativeWords) {
+        if (input.find(neg) != std::string::npos) {
+            W[z].data.negative += 1 ;
+        }
+    }
+
+    slow(5);
+    system("cls");
+
+}
+void scores(worker W[]);
 
 void Personal_log(const worker dummy[]){
     string a;
@@ -338,6 +423,7 @@ void selection(int a, worker W[]){
     system("cls");
 
     switch(a){
+
         case 1: tag(&W[z]);
         break;
         case 2: display(W);
@@ -346,10 +432,42 @@ void selection(int a, worker W[]){
         break;
         case 4: Personal_log(W);
         break;
+        case 5: commit(W);
+        break;
+        case 6: scores(W);
         
     }
 }
+void scores(worker W[]) {
+    string s;
+    cout << "input system password";
+    cin >> s;
+    if(password(s,Y)){
+    int P,N;
+    for(int i = 0 ; i < z ; i++){
+        P += W[i].data.positive;
+        N += W[i].data.negative;
+        
+    }
 
+    if (P > N) {
+        std::cout << "Overall Sentiment: Positive\n";
+    }
+    else if (N > P) {
+        std::cout << "Overall Sentiment: Negative\n";
+    }
+    else {
+        std::cout << "Overall Sentiment: Neutral\n";
+    }
+
+}else {
+    cout << "invalid password";
+}
+
+slow(5);
+system("cls");
+
+}
 
 int main(){
 
