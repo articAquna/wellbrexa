@@ -11,7 +11,9 @@ namespace fs = std::filesystem;
 using namespace std;
 
 int z = 0;
+int z_old = -1;
 string Y = "abc";
+
 struct age{
     int day , month , year;
 }
@@ -27,8 +29,8 @@ struct cont{
 }
 ;
 struct net{
-int positive;
-int negative;
+int positive = 0;
+int negative = 0;
 }
 ;
 struct worker{
@@ -42,6 +44,7 @@ struct worker{
     int signature[5];
     float increase = 0;
     net data;
+    int id = 0;
     
 
 
@@ -51,6 +54,7 @@ void calculation(worker &w);
 void slow(int s){
     cout << "system is proceesing the data\n";
     this_thread::sleep_for(chrono :: seconds(s));
+    system("cls");
 }
 bool read(){
     ifstream fin("markdown.txt");
@@ -105,6 +109,21 @@ bool display(const worker &dummy){
 }
 
 void tag(worker *W){
+
+    if(z != z_old){
+
+        cout << "do you wish to update you data if so return 1 \n";
+        int a;
+        cin >> a;
+        if (a  != 1){
+
+            return;
+
+        }
+
+    }
+
+    
 
     cout << "Dear worker, you will be provided with questions.";
     cout << "Infer and remember without verification, you're dead.\n";
@@ -174,10 +193,16 @@ void tag(worker *W){
 
     if(read()){
         cout << "Your form is validated. You may proceed.\n";
+        
+
         *W = dummy;
+        W->id = z + 1 ;
+        cout << "assigned worker id is = "<< W->id;
         calculation(W[z]);
 
         z++;
+        z_old++;
+        
 
     }else{
         cout << "Your data is terminated.";
@@ -225,6 +250,7 @@ void display(const worker dummy[]  ){
    if (password(a,Y)){
 
             for(int g = 0; g < z; g++){
+            cout << "---------------------------------------------------------------------------------------------------------";
                 cout << setw(20) << "Name: " << setw(20) << dummy[g].NAME << endl;
                 cout << setw(20) << "Date of Birth: " << setw(5) << dummy[g].AGE.day << "/" << setw(2) << dummy[g].AGE.month << "/" << setw(4) << dummy[g].AGE.year << endl << endl;
                 cout << setw(20) << "Address: " << endl << "Permanent: " << dummy[g].ADDRESS.padr << endl << "Temporary: " << dummy[g].ADDRESS.radr << endl << endl;
@@ -237,7 +263,7 @@ void display(const worker dummy[]  ){
                 cout << endl;
                 cout << setw(20) << "Pay: " << setw(10) << dummy[g].pay << endl << endl;    
                 cout << setw(20) << "Benefit Level: " << setw(10) << dummy[g].increase << endl;
-            
+             cout << "---------------------------------------------------------------------------------------------------------";
 
                 cout << endl << endl << endl;
             } 
@@ -292,6 +318,24 @@ void calculation(worker &w){
     w.bonus = w.pay + w.increase;
 }
 
+void change(worker w[]){
+    cout << " enter the emoloyee id ";
+    int k; cin >> k;
+    bool s=true;
+    for(int i = 0 ; i < z_old ; i++){
+        if(k == w[i].id){
+            z = i;
+            cout << "case switched to worker :"<< w[z].NAME;
+            s =false;    
+            break;
+        }
+
+    }
+    if(s)cout << " switch declined id dont match ";
+    slow(3);
+}
+
+
 int display(){
         int a;
         cout << setw(30) << "Table of Contents" << endl;
@@ -301,7 +345,9 @@ int display(){
             cout << "4. to view your personal data\n";
             cout << "5. enter commit about the system\n";
             cout << "6. view the status of teh system\n";
-            
+            cout << "7. switch users\n";
+            cout << "8. revert back to orignal status\n";
+
 
         cin>>a;
         return a;
@@ -418,9 +464,17 @@ void Personal_log(const worker dummy[]){
 
 
 }
+void transition(){
+
+    cout << "returning user status to add new \n";
+    slow(2);
+    z = z_old;
+
+}
 
 void selection(int a, worker W[]){
     system("cls");
+
 
     switch(a){
 
@@ -435,6 +489,11 @@ void selection(int a, worker W[]){
         case 5: commit(W);
         break;
         case 6: scores(W);
+        break;
+        case 7: change(W);
+        break;
+        case 8: transition();
+        break;
         
     }
 }
@@ -444,7 +503,7 @@ void scores(worker W[]) {
     cin >> s;
     if(password(s,Y)){
     int P,N;
-    for(int i = 0 ; i < z ; i++){
+    for(int i = 0 ; i < z_old ; i++){
         P += W[i].data.positive;
         N += W[i].data.negative;
         
