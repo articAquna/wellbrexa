@@ -165,7 +165,7 @@ void tag(worker *W){
            
         string commonJobs[5] = {
 
-            "1=Administrative Assistant",
+            "10=Administrative Assistant",
             "2=HR Officer",
             "3=Accountant",
             "4=IT Support",
