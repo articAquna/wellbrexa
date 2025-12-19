@@ -537,3 +537,7 @@ int main(){
         selection(display(), W);
     }
 }
+12
+23
+23
+23
