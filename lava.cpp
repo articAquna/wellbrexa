@@ -169,7 +169,7 @@ void tag(worker *W){
             "2=HR Officer",
             "3=Accountant",
             "4=IT Support",
-            "5=Customer Service Representative"
+            "5=Customer Service Representa2322323232tive"
                                                  };
             cout << "Choose your profession:" << endl; 
              for(int k = 0; k < 5; k++){
