@@ -14,37 +14,6 @@
 namespace fs = std::filesystem;
 using namespace std;
 
-// Console color codes
-enum Color {
-    BLACK = 0,
-    DARK_BLUE = 1,
-    DARK_GREEN = 2,
-    DARK_CYAN = 3,
-    DARK_RED = 4,
-    DARK_MAGENTA = 5,
-    DARK_YELLOW = 6,
-    GRAY = 7,
-    DARK_GRAY = 8,
-    BLUE = 9,
-    GREEN = 10,
-    CYAN = 11,
-    RED = 12,
-    MAGENTA = 13,
-    YELLOW = 14,
-    WHITE = 15
-};
-
-// Set console text color
-void setColor(int textColor, int bgColor = BLACK) {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hConsole, (bgColor << 4) | textColor);
-}
-
-// Reset color to default
-void resetColor() {
-    setColor(GRAY, BLACK);
-}
-
 // Global variables
 int z = 0;
 int z_old = 0;
@@ -892,11 +861,7 @@ int main() {
     try {
         const int total = 5;
         worker W[total];
-        
-        cout << "=== Worker Management System ===" << endl;
-        cout << "Default password is 'abc'. Please change it after first login.\n";
-        this_thread::sleep_for(chrono::seconds(3));
-        system("cls");
+    
         
         while (true) {
             try {
